@@ -1,6 +1,3 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
@@ -19,15 +16,10 @@ public class  BaseTest {
 
     @BeforeTest
     void setUp() throws MalformedURLException {
-        ChromeOptions browserOptions = new ChromeOptions();
-        browserOptions.setPlatformName("Windows 11");
-        browserOptions.setBrowserVersion("latest");
-        Map<String, Object> sauceOptions = new HashMap<>();
-        sauceOptions.put("username", "oauth-Juan-Schenfeld-P-218f9");
-        sauceOptions.put("accessKey", "7f5a33cb-c14b-42d5-8afa-eafa91cc926d");
-        sauceOptions.put("build", "selenium-build-1");
-        sauceOptions.put("name", "general");
-        browserOptions.setCapability("sauce:options", sauceOptions);
+
+        String accessKey = System.getenv("SAUCELABS_KEY");
+
+        ChromeOptions browserOptions = getChromeOptions(accessKey);
 
 
         URL url = new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub");
@@ -38,6 +30,19 @@ public class  BaseTest {
         driver.get("https://practice-automation.com/");
 
         homePage = new HomePage(driver);
+    }
+
+    private static ChromeOptions getChromeOptions(String accessKey) {
+        ChromeOptions browserOptions = new ChromeOptions();
+        browserOptions.setPlatformName("Windows 11");
+        browserOptions.setBrowserVersion("latest");
+        Map<String, Object> sauceOptions = new HashMap<>();
+        sauceOptions.put("username", "oauth-Juan-Schenfeld-P-218f9");
+        sauceOptions.put("accessKey", accessKey);
+        sauceOptions.put("build", "selenium-build-1");
+        sauceOptions.put("name", "general");
+        browserOptions.setCapability("sauce:options", sauceOptions);
+        return browserOptions;
     }
 
     @AfterTest

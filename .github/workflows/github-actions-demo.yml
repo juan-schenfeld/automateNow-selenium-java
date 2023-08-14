@@ -25,6 +25,8 @@ jobs:
 
       # Agrega el comando para compilar y ejecutar tus pruebas con Maven
       - name: Build and run Selenium tests
+        env:
+          SAUCELABS_KEY: ${{ secrets.SAUCELABS_KEY }}
         run: mvn clean test
 
       - name: List files in the repository
