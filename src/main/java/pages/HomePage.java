@@ -11,4 +11,9 @@ public class HomePage extends BasePage{
         click(findByLinkText("JavaScript Delays"));
         return new DelayPage(driver);
     }
+
+    public SliderPage sliderPage(){
+        click(findByLinkText("Sliders"));
+        return new SliderPage(driver);
+    }
 }

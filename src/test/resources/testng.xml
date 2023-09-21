@@ -5,5 +5,9 @@
         <classes>
             <class name="DelayTest"/>
         </classes>
+
     </test>
+    <listeners>
+        <listener class-name="listeners.EventListener" />
+    </listeners>
 </suite>
