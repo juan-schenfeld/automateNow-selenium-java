@@ -4,6 +4,7 @@
     <test thread-count="5" name="Surefire test" verbose="0">
         <classes>
             <class name="DelayTest"/>
+            <class name="SliderTest"/>
         </classes>
 
     </test>
