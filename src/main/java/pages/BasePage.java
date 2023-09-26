@@ -16,18 +16,6 @@ public class BasePage {
         this.driver = driver;
     }
 
-    protected WebElement findByLinkText(String text){
-        return new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions
-                        .visibilityOfElementLocated(By.linkText(text)));
-    }
-
-    protected WebElement findById(String id){
-        return new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions
-                        .visibilityOfElementLocated(By.id(id)));
-    }
-
     protected void click(WebElement element){
         element.click();
     }
@@ -35,6 +23,12 @@ public class BasePage {
     protected Boolean attributeToBe(WebElement element, String attribute, String value){
         return new WebDriverWait(driver, Duration.ofSeconds(11))
                 .until(ExpectedConditions.attributeToBe(element, attribute, value));
+    }
+
+    protected WebElement find(By selector){
+        return new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions
+                        .visibilityOfElementLocated(selector));
     }
 
 

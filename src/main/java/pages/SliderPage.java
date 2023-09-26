@@ -1,10 +1,15 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class SliderPage extends BasePage{
+
+    private By slider = By.id("slideMe");
+    private By sliderValue = By.id("value");
+
     public SliderPage(WebDriver driver) {
         super(driver);
     }
@@ -25,17 +30,16 @@ public class SliderPage extends BasePage{
         }
 
 
-
         actions.perform();
 
     }
 
     public int getValue(){
-        return Integer.parseInt(findById("value").getText());
+        return Integer.parseInt(find(sliderValue).getText());
     }
 
     public void clickSlider(){
-        findById("slideMe").click();
+        click(find(slider));
     }
 
 

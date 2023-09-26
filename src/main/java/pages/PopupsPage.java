@@ -1,8 +1,15 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class PopupsPage extends BasePage{
+
+    private By alertButton = By.id("alert");
+    private By confirmButton = By.id("confirm");
+    private By promptButton = By.id("prompt");
+    private By confirmResultText = By.id("confirmResult");
+    private By promptResultText = By.id("promptResult");
 
 
 
@@ -11,24 +18,24 @@ public class PopupsPage extends BasePage{
     }
 
     public void openAlert(){
-        click(findById("alert"));
+        click(find(alertButton));
     }
     public void openConfirm(){
-        click(findById("confirm"));
+        click(find(confirmButton));
     }
     public void openPrompt(){
-        click(findById("prompt"));
+        click(find(promptButton));
     }
     public String getPopupText(){
         return driver.switchTo().alert().getText();
     }
 
     public String getConfirmResult(){
-        return findById("confirmResult").getText();
+        return find(confirmResultText).getText();
     }
 
     public String getPromptResult(){
-        return findById("promptResult").getText();
+        return find(promptResultText).getText();
     }
 
     public void acceptPopup(){
