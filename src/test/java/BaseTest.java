@@ -1,8 +1,8 @@
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
 
 import java.net.MalformedURLException;
@@ -15,7 +15,7 @@ public class  BaseTest {
     private RemoteWebDriver driver;
     HomePage homePage;
 
-    @BeforeClass
+    @BeforeMethod
     void setUp() throws MalformedURLException {
 
         String accessKey = System.getenv("SAUCELABS_KEY");
@@ -45,7 +45,7 @@ public class  BaseTest {
         return browserOptions;
     }
 
-    @AfterClass
+    @AfterMethod
     void tearDown(){
         driver.close();
     }
