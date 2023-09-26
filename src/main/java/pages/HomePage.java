@@ -16,4 +16,9 @@ public class HomePage extends BasePage{
         click(findByLinkText("Sliders"));
         return new SliderPage(driver);
     }
+
+    public PopupsPage popupsPage(){
+        click(findByLinkText("Popups"));
+        return new PopupsPage(driver);
+    }
 }
