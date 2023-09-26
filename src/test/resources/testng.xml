@@ -5,6 +5,7 @@
         <classes>
             <class name="DelayTest"/>
             <class name="SliderTest"/>
+            <class name="PopupTest"/>
         </classes>
 
     </test>
